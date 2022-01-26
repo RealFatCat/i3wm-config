@@ -192,13 +192,13 @@ client.background       #FFFFFF
 
 bar {
   colors {
-    background #000000
+    background #222222
     statusline #FFFFFF
-    separator  #666666
+    separator  #CCCCCC
 
-    focused_workspace  #777777 #777777 #FFFFFF
-    active_workspace   #444444 #444444 #FFFFFF
-    inactive_workspace #333333 #222222 #888888
+    focused_workspace  #888888 #888888 #FFFFFF
+    active_workspace   #888888 #555555 #FFFFFF
+    inactive_workspace #888888 #333333 #AAAAAA
     urgent_workspace   #2F343A #900000 #FFFFFF
     binding_mode       #2F343A #900000 #FFFFFF
   }
@@ -209,6 +209,9 @@ bar {
 assign [class="firefox"] 2
 
 # Execs
+# exec --no-startup-id setxkbmap -layout "us,ru"
+# exec --no-startup-id setxkbmap -option "grp:alt_shift_toggle"
+exec --no-startup-id xautolock -time 5 -locker "~/.lock.sh"
 exec --no-startup-id firefox
 exec i3-sensible-terminal
 
