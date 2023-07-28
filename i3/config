@@ -46,7 +46,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -182,7 +183,7 @@ bindsym $mod+r mode "resize"
 
 # COLORS
 ## class                 border  bground text    indicator child_border
-client.focused          #777777 #777777 #FFFFFF #AAAAAA   #777777
+client.focused          #777777 #666666 #FFFFFF #AAAAAA   #777777
 client.focused_inactive #444444 #444444 #FFFFFF #272A2B   #5F676A
 client.unfocused        #333333 #222222 #888888 #292D2E   #222222
 client.urgent           #474747 #900000 #FFFFFF #900000   #900000
@@ -206,23 +207,37 @@ bar {
 }
 
 # Assigns
-assign [class="firefox"] 2
+assign [class=".irefox"] 2
+assign [class="TelegramDesktop"] 3
 
 # Execs
-# exec --no-startup-id setxkbmap -layout "us,ru"
-# exec --no-startup-id setxkbmap -option "grp:alt_shift_toggle"
-exec --no-startup-id xautolock -time 5 -locker "~/.lock.sh"
+exec --no-startup-id setxkbmap -layout "us,ru"
+exec --no-startup-id setxkbmap -option "grp:alt_shift_toggle"
+exec --no-startup-id xinput --set-prop 19 'libinput Accel Profile Enabled' 0, 1
+
+exec --no-startup-id xautolock -time 5 -locker "i3lock -c 222222"
 exec --no-startup-id firefox
-exec i3-sensible-terminal
+exec --no-startup-id xsetroot -solid "#333333"
+exec --no-startup-id nm-applet
+exec --no-startup-id telegram-desktop
+exec alacritty
 
 # Binds
 bindsym $mod+d exec "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#BEBEBE' -sf '#222222' -fn 'monospace-10' -p 'dmenu > '"
-bindsym $alt+Control+l exec ~/.lock.sh
+
+bindsym $alt+Control+l exec --no-startup-id i3lock -c 222222
+# volume
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume#
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
+
 
 # Gaps
-for_window [class=".*"] border pixel 1
-gaps outer 15
-gaps inner 15
+#  for_window [class=".*"] border pixel 1
+default_border pixel 1
+default_floating_border pixel 1
+# gaps outer 15
+# gaps inner 15
 
 # Misc
 focus_follows_mouse no
